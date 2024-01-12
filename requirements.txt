@@ -1,0 +1,9 @@
+requests
+beautifulsoup4
+regex
+openai
+pandas
+numpy
+tqdm
+sqlalchemy
+pymysql
