@@ -1,6 +1,8 @@
 # Using indexed ANN search in SingleStore
 
-This repository contains a collection of SQL scripts and Python notebooks designed for generating and handling large-scale vector data in SingleStore, and scraping and processing Wikipedia video game data. Below is an overview of each file and its purpose.
+This repository contains a collection of SQL scripts and Python notebooks designed for generating and handling large-scale vector data in SingleStore, and scraping and processing Wikipedia video game data. Below is an overview of each file and its purpose. 
+
+Although you can run the code from your python CLI, we recommend using VSCode to make the process of defining your virtual environment and running your Jupyter notebooks easier. This repository requires Python 3.9 or greater.
 
 ## Contents
 
@@ -12,34 +14,21 @@ This repository contains a collection of SQL scripts and Python notebooks design
 
 4. **video-game-emb.ipynb**: Another Jupyter notebook designed for searching and querying the SingleStore database. It uses the OpenAI API for embedding generation and the SQLAlchemy library for database interaction. The notebook provides functions for embedding text, searching the database for similar content, and generating responses using OpenAI's GPT model.
 
-## Setup and Configuration
+## Setup, Configuration, and Usage Instructions
 
 Before using these scripts, ensure that you have the necessary environment set up:
-
-- Install Python and the required libraries from `requirements.txt`.
 - Set up a SingleStore database instance that you can connect to.
+- Follow along with the database setup as in `appendix.sql`:
+   - Define the helper functions.
+   - Define the table `vecs` 
+   - Run the loop to generate the 160M mock vectors.
+   - Define and run the pipeline `wiki_pipeline` to import the 40K OpenAI vectors for the video game paragraphs.
+   - Build the vector index `ivfpq_nlist`.
+- Install Python and the required libraries from `requirements.txt` in your `venv`. 
+   - (Choose the 'Python: Create virtual environment' command in VSCode https://code.visualstudio.com/docs/python/environments#_creating-environments)
 - Obtain and set your OpenAI API key in `s2_openai_info.py`.
 - Configure your database connection details (username, password, connection string, port, and database name) in `s2_openai_info.py`.
-
-## Usage Instructions
-
-1. **Running appendix.sql**: 
-   - Import the script into your SQL client connected to a SingleStore database. I recommend using the SQL editor on SingleStore's cloud portal.
-   - Execute the script to create necessary functions, tables, and to populate the table with generated vectors.
-   - Ensure the AWS S3 bucket mentioned in the script is accessible for loading data into the SingleStore table.
-
-2. **Configuring s2_openai_info.py**:
-   - Fill in your OpenAI API key and database connection details.
-   - This script will be imported in the Jupyter notebooks for accessing the OpenAI API and the database.
-
-3. **Executing scraping_wikipedia.ipynb**:
-   - Run this notebook to scrape and process Wikipedia video game data.
-   - Ensure the database and OpenAI API are accessible.
-   - The notebook will scrape data, generate embeddings, and store them in your database.
-
-4. **Utilizing video_game_emb.ipynb**:
-   - Use this notebook to perform searches and queries on your database.
-   - It allows embedding new texts, searching for similar content in the database, and using GPT model for generating responses.
+- Run through the Jupyter notebook!
 
 ## Note
 

@@ -94,4 +94,12 @@ fields terminated by ','
 enclosed by '"'
 lines terminated by '\r\n';
 
+-- run the pipeline
+start pipeline `wiki_pipeline`;
+
+/* ONCE THE DATA IS LOADED, ADD THE VECTOR INDEX */
+alter table vecs add vector index ivfpq_nlist (v) INDEX_OPTONS='{"index_type":"IVF_PQ", "nlist": 790}';
+
+-- please refer to the documentation for more indexing options!
+
 
