@@ -4,7 +4,7 @@ This repository contains a collection of SQL scripts and Python notebooks design
 
 ## Contents
 
-1. **appendix.sql**: This SQL script is dedicated to generating 160,000,000 vectors in a table in SingleStore. It includes the definition of helper functions for generating a random, normalized, 1536-dimensional vector, which corresponds to the dimensionality of OpenAI embeddings from `text-ada-002`. The script also contains the code for creating a table `vecs` and inserting generated vectors into it. Additionally, it outlines the process of loading Wikipedia video game data from an open AWS S3 bucket into the same table.
+1. **appendix.sql**: This SQL script is dedicated to generating 160,000,000 mock vectors in a table in SingleStore. It includes the definition of helper functions for generating a random, normalized, 1536-dimensional vector, which corresponds to the dimensionality of OpenAI embeddings from `text-ada-002`. The script also contains the code for creating a table `vecs` and inserting the mock vectors into it. These are the mock vectors that we will use to simulate the expected 160,000,000 paragraphs in Wikipedia. Additionally, it outlines the process of loading Wikipedia video game paragraphs and embeddings from an open AWS S3 bucket into the same table.
 
 2. **s2_openai_info.py**: A Python script containing configurations for connecting to a database and OpenAI services. It includes placeholders for an API key, embedding model, GPT model, database username, password, connection string, port, and database name.
 
