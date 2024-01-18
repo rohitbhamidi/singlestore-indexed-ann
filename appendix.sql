@@ -102,4 +102,18 @@ alter table vecs add vector index ivfpq_nlist (v) INDEX_OPTONS='{"index_type":"I
 
 -- please refer to the documentation for more indexing options!
 
+/* RUNNING SAMPLE QUERIES */
+-- setting a query vector about Nintendo's Rad Racer!
+set @qv = (select v from vecs where id = 1125899906845489);
 
+-- exact kNN search
+select paragraph, v <*> @qv as sim
+from vecs
+order by sim use index () desc
+limit 10;
+
+--indexed ANN search
+select paragraph, v <*> @qv as sim
+from vecs
+order by sim use index (ivfpq_nlist) desc
+limit 10;
